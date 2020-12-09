@@ -1,2 +1,1 @@
-declare module "bootstrap";
-declare module "jquery";
+declare module "react-helmet";
