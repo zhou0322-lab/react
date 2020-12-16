@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.less";
 import { Button } from "antd";
+import Wordcloudl from "./components/WordCloud";
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,11 +20,25 @@ import {
 // popular web frameworks like Rails and Express.
 
 export default function ParamsExample() {
+  const list = [
+    {
+      value: 1,
+      name: "aq",
+    },
+    {
+      value: 15,
+      name: "qa",
+    },
+    {
+      value: 15,
+      name: "sa",
+    },
+  ];
   return (
     <Router>
       <div>
         <h2>Accounts</h2>
-
+        <Wordcloudl list={list} />
         <ul>
           <li>
             <Link to="/netflix">Netflix</Link>
