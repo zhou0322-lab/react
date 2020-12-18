@@ -3,6 +3,7 @@ import "./App.less";
 import { Button } from "antd";
 import Wordcloudl from "./components/WordCloud";
 import SelCard from "./components/SelCard";
+import { QuestionCircleFilled } from "@ant-design/icons";
 import {
   BrowserRouter as Router,
   Switch,
@@ -40,7 +41,14 @@ export default function ParamsExample() {
       <div>
         <h2>Accounts</h2>
         <Wordcloudl list={list} />
-        <SelCard checkd={true}>
+        <SelCard
+          checked={true}
+          bodyStyle={{ padding: 0 }}
+          checkIcon={<QuestionCircleFilled />}
+        >
+          <div>111111111</div>
+        </SelCard>
+        <SelCard>
           <div>111111111</div>
         </SelCard>
         <ul>

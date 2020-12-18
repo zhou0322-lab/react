@@ -1,25 +1,35 @@
 import React from "react";
 import classNames from "classnames";
 import "./style/index.less";
-
-interface selCardProps {
-  checkd?: boolean;
-  bodyStyle?: React.CSSProperties;
-  activeStyle?: React.CSSProperties;
-  children?: React.ReactNode;
-  checkIcon?: React.ReactNode;
-}
+import { selCardProps } from "./type";
+import checkedIcon from "./images/checked_icon.png";
 
 const SelCard: React.FC<selCardProps> = (props: selCardProps) => {
+  const {
+    checked = false,
+    checkIcon,
+    bodyStyle,
+    activeStyle,
+    children,
+    signStyle,
+  } = props;
   const classString = classNames("selcard-default", {
-    "active-class": props.checkd,
+    "active-class": checked,
   });
   return (
-    <div style={props.bodyStyle} className={classString}>
-      {props.children}
-      <div className="check-sign">{props.checkIcon}</div>
+    <div style={{ ...bodyStyle, ...activeStyle }} className={classString}>
+      {children}
+      {checked && (
+        <div className="check-sign" style={{ ...signStyle }}>
+          {checkIcon}
+        </div>
+      )}
     </div>
   );
+};
+
+SelCard.defaultProps = {
+  checkIcon: <img src={checkedIcon} alt="" />,
 };
 
 export default SelCard;
