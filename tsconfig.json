@@ -7,6 +7,8 @@
       "dom.iterable",
       "esnext"
     ],
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,

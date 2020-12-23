@@ -1,9 +1,10 @@
-import React from "react";
-import "./App.less";
-import { Button } from "antd";
-import Wordcloudl from "./components/WordCloud";
-import SelCard from "./components/SelCard";
-import { QuestionCircleFilled } from "@ant-design/icons";
+import React from 'react';
+import './App.less';
+import { Button } from 'antd';
+import Wordcloudl from './components/WordCloud';
+import SelCard from './components/SelCard';
+import Rc from './components/RcMotion';
+import { QuestionCircleFilled } from '@ant-design/icons';
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,7 +14,7 @@ import {
   useHistory,
   useLocation,
   useRouteMatch,
-} from "react-router-dom";
+} from 'react-router-dom';
 
 // Params are placeholders in the URL that begin
 // with a colon, like the `:id` param defined in
@@ -25,32 +26,31 @@ export default function ParamsExample() {
   const list = [
     {
       value: 1,
-      name: "aq",
+      name: 'aq',
     },
     {
       value: 15,
-      name: "qa",
+      name: 'qa',
     },
     {
       value: 15,
-      name: "sa",
+      name: 'sa',
     },
   ];
   return (
     <Router>
       <div>
-        <h2>Accounts</h2>
+        <h2>
+          Acsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+        </h2>
         <Wordcloudl list={list} />
-        <SelCard
-          checked={true}
-          bodyStyle={{ padding: 0 }}
-          checkIcon={<QuestionCircleFilled />}
-        >
+        <SelCard checked={true} bodyStyle={{ padding: 0 }} checkIcon={<QuestionCircleFilled />}>
           <div>111111111</div>
         </SelCard>
-        <SelCard>
+        <SelCard bodyStyle={{ marginTop: 20 }}>
           <div>111111111</div>
         </SelCard>
+        <Rc visible={true} />
         <ul>
           <li>
             <Link to="/netflix">Netflix</Link>
@@ -64,7 +64,9 @@ export default function ParamsExample() {
         </ul>
 
         <Switch>
-          <Route path="/:id" children={<Child />} />
+          <Route path="/:id">
+            <Child />
+          </Route>
         </Switch>
       </div>
     </Router>
@@ -78,7 +80,7 @@ function Child() {
   const history = useHistory();
   console.log(useLocation(), useRouteMatch());
   const go = () => {
-    history.push("/Zillow Group");
+    history.push('/Zillow Group');
   };
   return (
     <div>
