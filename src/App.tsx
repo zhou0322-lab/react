@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.less';
-import { Button } from 'antd';
+import { Button, Input, Select } from 'antd';
 import Wordcloudl from './components/WordCloud';
 import SelCard from './components/SelCard';
 import Rc from './components/RcMotion';
@@ -15,14 +15,15 @@ import {
   useLocation,
   useRouteMatch,
 } from 'react-router-dom';
+const { Option } = Select;
 
-// Params are placeholders in the URL that begin
-// with a colon, like the `:id` param defined in
-// the route in this example. A similar convention
-// is used for matching dynamic segments in other
-// popular web frameworks like Rails and Express.
+interface MapProps {
+  [key: string]: RegExp;
+}
 
 export default function ParamsExample() {
+  const [val, setVal] = useState<any>('');
+  const [selVal, setSelVal] = useState<any>('');
   const list = [
     {
       value: 1,
@@ -37,12 +38,32 @@ export default function ParamsExample() {
       name: 'sa',
     },
   ];
+  const inputChange = (e: any) => {
+    const { value } = e.target;
+    const map: MapProps = {
+      zh: /^[\u0391-\uFFE5]*$/g,
+      number: /^\d*$/g,
+      zm: /^[a-zA-z]*$/g,
+    };
+    if (map[selVal].test(value) || value === '') {
+      setVal(value);
+    }
+  };
+
+  const selChange = (val: string) => {
+    console.log(val);
+    setSelVal(val);
+  };
   return (
     <Router>
-      <div>
-        <h2>
-          Acsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-        </h2>
+      <div style={{ padding: 20 }}>
+        <h2>Acssssss</h2>
+        <Input value={val} onChange={inputChange} />
+        <Select style={{ width: 200 }} onChange={selChange} value={selVal}>
+          <Option value="number">数字</Option>
+          <Option value="zh">中文</Option>
+          <Option value="zm">字母</Option>
+        </Select>
         <Wordcloudl list={list} />
         <SelCard checked={true} bodyStyle={{ padding: 0 }} checkIcon={<QuestionCircleFilled />}>
           <div>111111111</div>
