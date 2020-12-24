@@ -9,18 +9,7 @@ export interface BackTopProps {
 }
 
 const BackTop: React.FC<BackTopProps> = (props) => {
-  const {
-    visibilityHeight = 20,
-    children,
-    style = {
-      position: 'fixed',
-      right: '20px',
-      bottom: '100px',
-      width: '48px',
-      height: '48px',
-      cursor: 'pointer',
-    },
-  } = props;
+  const { visibilityHeight = 20, children, style } = props;
   const [visible, setVisible] = useState(false);
   const backTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
@@ -75,5 +64,13 @@ const BackTop: React.FC<BackTopProps> = (props) => {
 };
 BackTop.defaultProps = {
   visibilityHeight: 30,
+  style: {
+    position: 'fixed',
+    right: '100px',
+    bottom: '100px',
+    width: '48px',
+    height: '48px',
+    cursor: 'pointer',
+  },
 };
 export default React.memo(BackTop);
