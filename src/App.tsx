@@ -4,6 +4,7 @@ import { Button, Input, Select } from 'antd';
 import Wordcloudl from './components/WordCloud';
 import SelCard from './components/SelCard';
 import Rc from './components/RcMotion';
+import BackTop from './components/BackTop';
 import { QuestionCircleFilled } from '@ant-design/icons';
 import {
   BrowserRouter as Router,
@@ -68,7 +69,7 @@ export default function ParamsExample() {
         <SelCard checked={true} bodyStyle={{ padding: 0 }} checkIcon={<QuestionCircleFilled />}>
           <div>111111111</div>
         </SelCard>
-        <SelCard bodyStyle={{ marginTop: 20 }}>
+        <SelCard bodyStyle={{ marginTop: 300 }}>
           <div>111111111</div>
         </SelCard>
         <Rc visible={true} />
@@ -89,6 +90,7 @@ export default function ParamsExample() {
             <Child />
           </Route>
         </Switch>
+        <BackTop />
       </div>
     </Router>
   );
